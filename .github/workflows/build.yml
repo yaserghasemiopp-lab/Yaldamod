@@ -19,8 +19,13 @@ jobs:
       - name: Grant permission
         run: chmod +x gradlew
 
-      - name: Build APK
-        run: ./gradlew assembleDebug --stacktrace --info 2>&1 | tee build-log.txt
+      - name: Build APK (Release)
+        run: ./gradlew assembleRelease --stacktrace --info 2>&1 | tee build-log.txt
+        env:
+          TESHINE_KEYSTORE_PASSWORD: ${{ secrets.TESHINE_KEYSTORE_PASSWORD }}
+          TESHINE_KEY_PASSWORD: ${{ secrets.TESHINE_KEY_PASSWORD }}
+          TESHINE_KEY_ALIAS: ${{ secrets.TESHINE_KEY_ALIAS }}
+          TESHINE_KEYSTORE_BASE64: ${{ secrets.TESHINE_KEYSTORE_BASE64 }}
 
       - name: Upload build log
         if: always()
@@ -33,5 +38,5 @@ jobs:
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: app-release
+          path: app/build/outputs/apk/**/*.apk
