@@ -18,25 +18,21 @@ jobs:
 
       - name: Grant permission
         run: chmod +x gradlew
+        
+      - name: Decode Keystore
+        run: echo "${{ secrets.TESHINE_KEYSTORE_BASE64 }}" | base64 --decode > ${{ github.workspace }}/keystore.jks
 
       - name: Build APK (Release)
-        run: ./gradlew assembleRelease --stacktrace --info 2>&1 | tee build-log.txt
+        run: ./gradlew assembleRelease
         env:
           TESHINE_KEYSTORE_PASSWORD: ${{ secrets.TESHINE_KEYSTORE_PASSWORD }}
           TESHINE_KEY_PASSWORD: ${{ secrets.TESHINE_KEY_PASSWORD }}
           TESHINE_KEY_ALIAS: ${{ secrets.TESHINE_KEY_ALIAS }}
-          TESHINE_KEYSTORE_BASE64: ${{ secrets.TESHINE_KEYSTORE_BASE64 }}
-
-      - name: Upload build log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build-log.txt
+          TESHINE_KEYSTORE_PATH: ${{ github.workspace }}/keystore.jks
 
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v4
         with:
           name: app-release
-          path: app/build/outputs/apk/**/*.apk
+          path: app/build/outputs/apk/release/*.apk
