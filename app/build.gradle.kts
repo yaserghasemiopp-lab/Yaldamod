@@ -5,12 +5,12 @@ plugins {
 }
 
 android {
-    namespace = "ir.teshine.app"
+    namespace = "ir.yaldamod.app"
 
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ir.teshine.app"
+        applicationId = "ir.yaldamod.app"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
