@@ -79,7 +79,7 @@ class MainActivity : ComponentActivity() {
         private const val DOUBLE_BACK_EXIT_TIME = 2000L
         private const val MAX_PREFETCH_LINKS = 6
 
-        private const val STATUS_BAR_COLOR = "#0EAD69"
+        private const val STATUS_BAR_COLOR = "#fc9937"
     }
 
     @SuppressLint("SetJavaScriptEnabled")
