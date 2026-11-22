@@ -1,4 +1,4 @@
-package ir.teshine.app
+package ir.yaldamod.app
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -73,8 +73,8 @@ class MainActivity : ComponentActivity() {
     private val isNetworkAvailable = mutableStateOf(false)
 
     companion object {
-        private const val SITE_HOST = "teshine.ir"
-        private const val HOME_URL = "https://teshine.ir"
+        private const val SITE_HOST = "yaldamod.ir"
+        private const val HOME_URL = "https://yaldamod.ir"
         private const val RETRY_INTERVAL_SECONDS = 30
         private const val DOUBLE_BACK_EXIT_TIME = 2000L
         private const val MAX_PREFETCH_LINKS = 6
@@ -400,7 +400,7 @@ class MainActivity : ComponentActivity() {
                 }
 
             userAgentString =
-                "$userAgentString TeshineApp/1.0"
+                "$userAgentString YaldamodApp/1.0"
         }
 
         webView.setOnLongClickListener {
