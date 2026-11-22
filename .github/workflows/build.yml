@@ -27,7 +27,7 @@ jobs:
         env:
           TESHINE_KEYSTORE_PASSWORD: ${{ secrets.TESHINE_KEYSTORE_PASSWORD }}
           TESHINE_KEY_PASSWORD: ${{ secrets.TESHINE_KEY_PASSWORD }}
-          TESHINE_KEY_ALIAS: ${{ secrets.TESHINE_KEY_ALIAS }}
+          TESHINE_KEY_ALIAS: yaldamod
           TESHINE_KEYSTORE_PATH: ${{ github.workspace }}/keystore.jks
 
       - name: Upload APK
